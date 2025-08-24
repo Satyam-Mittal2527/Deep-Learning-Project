@@ -6,10 +6,10 @@ This project is build to detect the Early Disease after seeing the human nail,Th
 
 # About the Model
 
-The model used was a pre-trained model ImageNet model Xception
-A convolutional neural network is also known as a ConvNet, which is a kind of artificial neural network. A convolutional neural network has an input layer, an output layer, and various hidden layers. Xception is a type of CNN (Convolutional Neural Network) that is considered to be one of the best computer vision models to date. The creators of this model evaluated the networks and increased the depth using an architecture with very small (3 × 3) convolution filters, which showed a significant improvement on the prior-art configurations. They pushed the depth to 16–19 weight layers making it approx — 138 trainable parameters.
+The model used was a pre-trained model ImageNet model VGG16
+A convolutional neural network is also known as a ConvNet, which is a kind of artificial neural network. A convolutional neural network has an input layer, an output layer, and various hidden layers. VGG16 is a type of CNN (Convolutional Neural Network) that is considered to be one of the best computer vision models to date. The creators of this model evaluated the networks and increased the depth using an architecture with very small (3 × 3) convolution filters, which showed a significant improvement on the prior-art configurations. They pushed the depth to 16–19 weight layers making it approx — 138 trainable parameters.
 
-https://www.tensorflow.org/api_docs/python/tf/keras/applications/Xception
+https://www.tensorflow.org/api_docs/python/tf/keras/applications/VGG16
 
 
 
@@ -89,7 +89,7 @@ Download the Dataset and import it in colab before running through the colab. Re
 ## Working with Model
 
 ```javascript
-from tensorflow.keras.applications.Xception import Xception,preprocess_input
+from tensorflow.keras.applications.vgg16 import VGG16,preprocess_input
 from tensorflow.keras.models import Model
 from tensorflow.keras.preprocessing import image
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
@@ -98,11 +98,11 @@ from glob import glob
 import numpy as np
 import matplotlib.pyplot as plt
 
-xception = Xception(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
-for layer in Xception.layers:
+vgg16 = VGG16(weights='imagenet', include_top=False, input_shape=(224, 224, 3))
+for layer in vgg16.layers:
     layer.trainable = False
 
-x = Flatten()(xception.output)
+x = Flatten()(vgg16.output)
 predictions = Dense(17, activation='softmax')(x)
 
 model = Model(inputs=vgg.input, outputs=predictions)
