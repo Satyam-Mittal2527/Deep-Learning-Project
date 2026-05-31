@@ -55,8 +55,8 @@ More Installation needed if some other platform
 
 ## Result/Accuracy
 
-- Training Accuracy: 0.7009
-- Validation Accuracy: 0.6562
+- Training Accuracy: 0.87
+- Validation Accuracy: 0.89
 ## Demo
 
 
